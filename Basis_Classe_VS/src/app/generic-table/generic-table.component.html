@@ -1,0 +1,40 @@
+<!--th *ngFor = "let column of headers">
+    {{column}}
+</th-->
+
+<!--tr *ngFor = "let row of data">
+    <td *ngFor = "let column of headers">
+      {{row[column]}}
+    </td>
+    {{ row.id }}
+</tr>
+
+<h2> {{ data | json }} </h2-->
+
+<div class="container">
+ 
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of getHeaders()">{{ header }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        
+      <tr *ngFor="let item of data" class = "margin">
+        <!--td  *ngFor="let key of getHeaders()">{{ getNestedObject(key, item) }}</td-->
+        <td  *ngFor="let key of getHeaders()">
+            {{ item[key] }}
+        </td>
+        <button class = "btn bg-info" (click) = "Edit(item)">Edit</button>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <h1 *ngIf = "edit"
+  >Edit: {{ idEdit | json }} </h1>
+
+</div>

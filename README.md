@@ -1,1 +1,3 @@
 # AMIS_BASIS_CLASS
+
+test
