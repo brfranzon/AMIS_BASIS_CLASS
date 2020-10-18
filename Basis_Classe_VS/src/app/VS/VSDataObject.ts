@@ -34,6 +34,30 @@ export abstract class VSDataObject {
     }
 
   }
+
+
+  DeleteNachID(DataQuellename: string, id: any){
+    switch (DataQuellename) {
+      case 'DataAllSchueler':
+        return  this._http.delete(this.URLSchuelerJson + "/" + id);
+
+      case 'DataAllKurse':
+        return  this._http.delete(this.URLKurseJson + "/" + id);
+    }
+  }
+
+  UpdateNachID(DataQuellename: string, id: any){
+    switch (DataQuellename) {
+      case 'DataAllSchueler':
+        return  this._http.put(this.URLSchuelerJson + "/" + id, {});
+
+      case 'DataAllKurse':
+        return  this._http.put(this.URLKurseJson + "/" + id, {});
+    }
+  }
+
+
+
   
 }
 
