@@ -36,8 +36,7 @@ export class GenericTableComponent implements OnInit {
           }
         }
        );
-
-       return key != 'address'? item[key]: item[key].city;
+      return key != 'address'? item[key]: item[key].city;
   }
 
   Edit(item){

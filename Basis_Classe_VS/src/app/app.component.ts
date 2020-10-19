@@ -27,40 +27,13 @@ export class AppComponent implements OnDestroy {
   subscriptionKurs: Subscription;
 
   ngOnInit(): void {
-    /*  this.schueler.DataGetAll('DataAllSchueler').subscribe((data) => {
-      (this.dataSchueler = data), console.log('schueler', this.dataSchueler);
-    });
-
-
-    this.schueler.DataGetAll('DataAllKurse').subscribe((data) => {
-      (this.dataKurs = data),  console.log('kurs', this.dataKurs)
-    }); 
-  */
-
-    this.subscriptionSchueler = 
+    
     
     this.schueler
-      .DataLoad('DataAllSchueler')
-      .subscribe
-      ((data) => {
-        (this.dataSchueler = data),
-        console.table(this.dataSchueler);
-      });
+      .DataLoad('DataAllSchueler');
 
-    this.subscriptionKurs = this.schueler
-      .DataLoad('DataAllKurse')
-      .subscribe((data) => {
-        (this.dataKurs = data), console.table(this.dataKurs);
-      });
-
-
-
-    this.schueler.DataSuche('DataAllKurse', '2').subscribe(
-      (d) => {console.log(d)}
-    );
 
   }
-
 
 
   ngOnDestroy() {
