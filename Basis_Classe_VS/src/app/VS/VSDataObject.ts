@@ -11,20 +11,22 @@ export abstract class VSDataObject {
   constructor(protected _http: HttpClient) {}
   public abstract DataLoad(name: string): Observable<any>;
   public abstract DataSuche(name: string, id: any): Observable<any>;
-
+  // DataDelete
+  // DataUpdate
 
   DataGetAll(DataQuellename: string): Observable<any> {
     switch (DataQuellename) {
       case 'DataAllSchueler':
         return this._http.get(this.URLSchuelerJson);
 
+
       case 'DataAllKurse':
         return this._http.get(this.URLKurseJson);
     }
   }
 
-  SucheNachID(DataQuellename: string, id: any) {
 
+  SucheNachID(DataQuellename: string, id: any) {
     switch (DataQuellename) {
       case 'DataAllSchueler':
         return  this._http.get(this.URLSchuelerJson + "/" + id);
@@ -32,9 +34,7 @@ export abstract class VSDataObject {
       case 'DataAllKurse':
         return  this._http.get(this.URLKurseJson + "/" + id);
     }
-
   }
-
 
   DeleteNachID(DataQuellename: string, id: any){
     switch (DataQuellename) {
@@ -56,10 +56,9 @@ export abstract class VSDataObject {
     }
   }
 
-
-
-  
 }
+
+
 
 @Injectable()
 export class Schueler extends VSDataObject {

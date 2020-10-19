@@ -37,10 +37,14 @@ export class AppComponent implements OnDestroy {
     }); 
   */
 
-    this.subscriptionSchueler = this.schueler
+    this.subscriptionSchueler = 
+    
+    this.schueler
       .DataLoad('DataAllSchueler')
-      .subscribe((data) => {
-        (this.dataSchueler = data), console.table(this.dataSchueler);
+      .subscribe
+      ((data) => {
+        (this.dataSchueler = data),
+        console.table(this.dataSchueler);
       });
 
     this.subscriptionKurs = this.schueler
