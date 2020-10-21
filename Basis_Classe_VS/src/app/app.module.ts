@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Schueler } from './VS/VSDataObject';
-import { GenericTableComponent } from './generic-table/generic-table.component';
+import { GenericTableComponent } from './TVListViewBasis/generic-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListViewSchuerlerComponent } from './list-view-schuerler/list-view-schuerler.component';
 import { ListViewKursComponent } from './list-view-kurs/list-view-kurs.component';

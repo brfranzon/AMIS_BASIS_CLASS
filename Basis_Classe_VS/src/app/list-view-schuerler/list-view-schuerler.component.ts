@@ -1,3 +1,4 @@
+import { getLocaleDateFormat } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {  OnInit } from '@angular/core';
 import { Component, OnDestroy } from '@angular/core';
@@ -17,25 +18,35 @@ export class ListViewSchuerlerComponent implements OnInit {
 
  schueler: Schueler = new Schueler(this._http);
  dataSchueler: Schueler;
-
+ MsgError;
 
  subscriptionSchueler: Subscription;
  subscriptionKurs: Subscription;
 
  ngOnInit(): void {
-      this.schueler
+    this.getData();
+ }
+
+ getData(){
+  this.schueler
      .DataLoad('DataAllSchueler').subscribe
      ((data) => {
        (this.dataSchueler = data),
        console.table(this.dataSchueler);
-     });
- }
+     },
 
+     error => this.MsgError = error
+     
+     );
+ }
 
  ngOnDestroy() {
-   this.subscriptionSchueler.unsubscribe();
-   
+   this.subscriptionSchueler.unsubscribe();  
  }
 
+ ngAfterContentInit(){
+   console.log('teste', this.dataSchueler) 
+ }
 
+  //mainData = this.getData();
 }

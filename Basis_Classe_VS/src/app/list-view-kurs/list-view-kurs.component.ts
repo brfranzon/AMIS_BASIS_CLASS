@@ -15,17 +15,17 @@ import { Schueler } from '../../app/VS/VSDataObject';
 export class ListViewKursComponent implements OnInit {
 
   schueler: Schueler = new Schueler(this._http);
-  dataKurs: Schueler;
+  dataKurs: any;
  
   constructor(protected _http: HttpClient) { }
 
   ngOnInit(): void {
     this.schueler
-    .DataLoad('DataKurs').subscribe
-    ((data) => {
+    .DataLoad('DataKurs').subscribe(
+      (data) => {
       (this.dataKurs = data),
       console.table(this.dataKurs);
-    });
+    }); 
   }
 
 }

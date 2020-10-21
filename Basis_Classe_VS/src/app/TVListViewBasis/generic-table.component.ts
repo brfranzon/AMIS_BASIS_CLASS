@@ -16,15 +16,19 @@ export class GenericTableComponent implements OnInit {
 
   getHeaders() {
     let headers: string[] = [];
+    //console.log('header initial: ', headers);
+    //console.log('data initial: ', this.data);
+
     if(this.data) {
       this.data.forEach((value) => {
         Object.keys(value).forEach((key) => {
           if(!headers.find((header) => header == key)){
             headers.push(key)
           }
-        })
-      })
+        });
+      });
     }
+    //console.log('header final: ', headers);
     return headers;
   }
 
