@@ -1,0 +1,14 @@
+<TvsViewDataFilter
+  (queryResult)="OnSearch($event)"
+  (filterName)="getFilterName($event)" 
+></TvsViewDataFilter>
+
+<div class="container mt-5">
+    <generic-table
+    [data] = "dataKurs"
+    >
+    </generic-table>
+</div>
+
+<!--p>    [userFilter] = "searchResult"
+</p-->

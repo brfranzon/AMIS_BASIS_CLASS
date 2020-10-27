@@ -4,11 +4,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Schueler } from './VS/VSDataObject';
-import { GenericTableComponent } from './TVListViewBasis/generic-table.component';
+import { Schueler } from './TVsDataObject/TvsDataObject';
+import { GenericTableComponent } from './TVsListViewBasis/generic-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListViewSchuerlerComponent } from './list-view-schuerler/list-view-schuerler.component';
-import { ListViewKursComponent } from './list-view-kurs/list-view-kurs.component';
+import { ListViewSchuerlerComponent } from './ListViewSchuerler/list-view-schuerler.component';
+import { ListViewKursComponent } from './ListViewKurs/list-view-kurs.component';
+import { TvsViewDataFilterComponent } from './TvsViewDataFilter/TvsViewDataFilter.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { SearchPipe } from './search.pipe';
 
 
 @NgModule({
@@ -16,13 +21,18 @@ import { ListViewKursComponent } from './list-view-kurs/list-view-kurs.component
     AppComponent,
     GenericTableComponent,
     ListViewSchuerlerComponent,
-    ListViewKursComponent
+    ListViewKursComponent,
+    TvsViewDataFilterComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [Schueler],
   bootstrap: [AppComponent]

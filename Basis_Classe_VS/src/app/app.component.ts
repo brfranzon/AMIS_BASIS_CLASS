@@ -8,38 +8,17 @@ import { Subscription } from 'rxjs';
 //import { TVsDataRecord } from './factory-method/vs';
 //import { HttpClient } from '@angular/common/http';
 
-import { Schueler } from '../app/VS/VSDataObject';
+import { Schueler } from './TVsDataObject/TvsDataObject';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnDestroy {
-  //constructor(private schueler: Schueler){}
-  constructor(protected _http: HttpClient) {}
+export class AppComponent {
+  ngOnInit(): void {}
 
-  schueler: Schueler = new Schueler(this._http);
-  dataSchueler: Schueler;
-  dataKurs: Schueler;
-
-  subscriptionSchueler: Subscription;
-  subscriptionKurs: Subscription;
-
-  ngOnInit(): void {
-    
-    
-    this.schueler
-      .DataLoad('DataAllSchueler');
-
-
-  }
-
-
-  ngOnDestroy() {
-    this.subscriptionSchueler.unsubscribe();
-    this.subscriptionKurs.unsubscribe();
-  }
+  ngOnDestroy() {}
 
 
 }
