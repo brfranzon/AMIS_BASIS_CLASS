@@ -1,0 +1,59 @@
+<div class="col-auto mt-4">
+  <button class="btn btn-success" (click)="Aktualisieren()">Aktualisieren</button>
+</div>
+
+<div class="container search-table mt-5">
+  <div class="search-box">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="myInput">Name</label>
+        <input
+          type="text"
+          id="myInput"
+          placeholder="Suche..."
+          [(ngModel)]="searchName"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="myInput">Nachname</label>
+        <input
+          type="text"
+          id="myInput"
+          placeholder="Suche..."
+          [(ngModel)]="searchNachname"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--div class="search-list">
+      <h3>{{ total }} Registros encontrados.</h3>
+      <table class="table" id="myTable">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Versão</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of results$ | async">
+            <td>{{ result.name }}</td>
+            <td>{{ result.version }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div-->
+
+<!--div  class="col-md-6" *ngIf = "schueler">
+        <input
+        type="text"
+        id="myInput"
+        class="form-control"
+        [formControl]="queryField"
+        placeholder="Suche...."
+        (keyup)="KeyUpSearch($event)"
+      >
+        
+      </div/-->

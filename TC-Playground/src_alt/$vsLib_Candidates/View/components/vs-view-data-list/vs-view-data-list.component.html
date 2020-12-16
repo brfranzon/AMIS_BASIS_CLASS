@@ -1,0 +1,30 @@
+<hr>
+
+<!--li><a routerLink={{ViewProperties.ActionEditRoute}} routerLinkActive="active">Action-Neu</a></li>
+<li><a routerLink={{ViewProperties.ActionEditRoute}} routerLinkActive="active">Action-Edit</a></li>
+<li><a routerLink={{ViewProperties.ActionEditRoute}} routerLinkActive="active">Action-Delete</a></li-->
+
+<input type="text" #test>
+<button class="btn btn-dark" (click) = EditClick(test.value)>Edit</button>
+
+<a [routerLink] = "[ViewProperties.ActionEditRoute]">
+
+                <button  type="button" class="ml-2 btn btn-success">
+                    Edit with routerLink
+                </button>
+</a>
+<hr>
+
+
+<p>ViewProperties.ViewTitleIsVisible = {{ViewProperties.ViewTitleIsVisible}}</p>
+<p *ngIf="ViewProperties.ViewTitleIsVisible"><b>Listenansicht: {{ ViewProperties.ViewTitle }}</b></p>
+
+<hr>
+
+<b>Filter Items ({{ ViewProperties.FilterMain.length }}):</b>
+<p *ngFor = "let item of ViewProperties.FilterMain">{{ item.Caption }} = "{{ item.Value }}" ({{ item.ControlType }})</p>
+
+
+<hr>
+
+

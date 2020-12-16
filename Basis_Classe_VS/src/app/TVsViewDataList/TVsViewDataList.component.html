@@ -1,0 +1,128 @@
+<p><strong>Basis Template Begin</strong></p>
+
+
+<p > <strong> Eigenschaft:</strong>              {{ meldung.msg }}</p>
+<p> <strong>  Method:</strong>                   {{ meldung.Meldung() }}</p>
+<p> <strong>  Event:</strong>                    {{ meldung._onMyEvent | json }}</p>
+
+
+
+
+<!--p *ngFor="let item of Filter">
+  {{ item.caption }}
+</p>
+<p><strong>Basis Template Ende</strong></p>
+
+<p>___________ ng-content __________</p>
+<ng-content selector = ".title"> </ng-content>
+<ng-content selector = ".content1"></ng-content>
+<ng-content selector = ".content2"></ng-content>
+<ng-content selector = ".btn-warning"></ng-content-->
+
+
+<!--p>___________ ng-template ngFor __________</p>
+
+<li *ngFor="let item of items">
+  <ng-template
+    [ngTemplateOutlet]="X"
+    [ngTemplateOutletContext]="{ $implicit: item }"
+  >
+  </ng-template>
+</li-->
+
+
+
+<!--p>___________ TemplateRef and ngTemplateOutlet __________</p>
+
+<ng-template #template>
+  <p> Template from the parent: </p>
+  <button type="button" class="btn btn-primary mr-2" >Primary</button>
+  <button type="button" class="btn btn-secondary mr-2">Secondary</button>
+  <button type="button" class="btn btn-success mr-2">Sucess</button>
+</ng-template>
+
+<ng-template #template1>
+  <p> Template from the parent: </p>
+  <button type="button" class="btn btn-danger mr-2" >Danger</button>
+ </ng-template-->
+
+
+ <!--h2>Parent Component</h2>
+ <p>
+     {{dataFromChild}}
+ </p>
+ <hr-->
+
+<!--list-view-schuerler
+(sendDataToParent)="eventFromChild($event)"
+>
+</list-view-schuerler-->
+
+
+
+<!--component-test
+  property="Hier die Mutter spricht..."
+  [Childtemplate]="template"
+></component-test-->
+
+
+<!--component-test1
+    property="Hier die Mutter spricht 1"
+    [Childtemplate]="template1"
+>
+</component-test1-->
+
+
+
+
+
+
+
+<!--div class="dropdown">
+  <button
+    class="btn btn-secondary dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    {{ menuTitle }}
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">
+      <li *ngFor="let item of menuvalues">
+        {{ item.value }}
+      </li>
+    </a>
+  </div>
+</div>
+
+
+<ul>
+  <li *ngFor="let value of menuvalues">{{ item.value }}</li>
+</ul-->
+
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of getHeaders()">{{ header }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of data" class="margin">
+        <!--tr *ngFor="let item of data | search: userFilter" class = "margin"-->
+        <!--td  *ngFor="let key of getHeaders()">{{ getNestedObject(key, item) }}</td-->
+        <td *ngFor="let key of getHeaders()">
+          {{ item[key] }}
+        </td>
+        <button class="btn bg-info" (click)="Edit(item)">Edit</button>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1 *ngIf="edit">Edit: {{ idEdit | json }}</h1>
+</div>

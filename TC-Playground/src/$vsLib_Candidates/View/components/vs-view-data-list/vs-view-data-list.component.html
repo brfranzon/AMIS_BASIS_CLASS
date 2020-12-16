@@ -1,0 +1,81 @@
+<!--
+  <p>ViewProperties.SectionIsVisible_ViewTitle = {{ViewProperties.SectionIsVisible_ViewTitle}}</p>
+-->
+
+  
+<div *ngIf="!ViewProperties.TestModeLayout" class="vsView">
+  <div *ngIf="ViewProperties.SectionIsVisible_ViewTitle" class="vsViewSectionTitle">
+    Listenansicht: {{ ViewProperties.ViewTitle }}
+  </div>
+
+  <div>
+      <table>
+       <thead>
+        <tr>
+          <th  class=" p-2" *ngFor="let header of _object.keys(tickets[0]); let i = index">{{header}}</th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr *ngFor="let row of tickets; let i = index" >
+
+          <th class = "mr-3  p-2" *ngFor="let objKey of _object.keys(row); let j = index">
+            {{ row[objKey] }}
+          </th>
+
+          <button type="button" class="btn btn-success" (click)="onEdit(row)">  Edit  </button>
+          <!-- <button type="button" class="btn btn-success" (click)="editTicketTest(row)">  Edit  </button> -->
+
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+ 
+  
+    
+
+  
+
+  <!-- <ng-content select="[slot='Table']"></ng-content>
+  <ng-content select="[slot='two']"></ng-content>
+
+  <li *ngFor="let item of items">
+    <ng-template
+    [ngTemplateOutlet]="templateRef" 
+    [ngTemplateOutletContext]="{$implicit: item}">
+    </ng-template>
+  </li> -->
+
+</div>
+
+
+
+<div *ngIf="ViewProperties.TestModeLayout" class="vsView">
+
+  <div *ngIf="ViewProperties.SectionIsVisible_ViewTitle" class="vsViewSectionPlaceholderTitle">
+    Ansicht: {{ ViewProperties.ViewTitle }}
+  </div>
+
+
+  <div class="vsViewSectionPlaceholderMenu">Lokales Menü / Toolbar</div>
+
+  <div class="vsViewSectionPlaceholderExtern">Filter Controls</div>
+
+  <div class="vsViewSectionPlaceholderMain">
+    <div #sectionMainTable class="vsViewSectionPlaceholderMainTable">Table Component</div>   
+    <div #sectionMainRight class="vsViewSectionPlaceholderMainRight">Details/Buttons</div>
+  </div>
+
+  <div class="vsViewSectionPlaceholderFooter">Lokaler Footer</div>
+
+  <!--
+  <b>Filter Items ({{ ViewProperties.FilterMain.length }}):</b>
+  <p *ngFor = "let item of ViewProperties.FilterMain">{{ item.Caption }} = "{{ item.Value }}" ({{ item.ControlType }})</p>
+
+  <hr>
+  -->
+
+</div>

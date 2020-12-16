@@ -1,0 +1,29 @@
+<!-- So war es bisher... -->
+<!--
+<vs-view-data-list
+  [ViewTitle]   = "ViewTitle"
+  [FilterMain]  = "FilterMain"
+></vs-view-data-list>
+-->
+
+<!-- Jetzt nach Einführung von ViewProperties nur eine einzige Zuweisung... -->
+<vs-view-data-list
+  [ViewProperties]      = "ViewProperties"
+></vs-view-data-list>
+
+<p>
+  Hallo, ich bin der Inhalt, den die konkrete abgeleitete View hinzufügt.
+  Dieser Inhalt wird über <i>Content Projection</i> der übergeordneten View Component (--> Basisklasse)
+  hinzugefügt (injiziert).
+</p>
+
+<p>
+  In vielen konkreten Views wird dieser zusätzliche Inhalt vermutlich nur aus dem HTML für die Filter-Steuerelemente
+  bestehen, oder sogar komplett fehlen.
+</p>
+
+<br>Beispiele für Inhalte:
+<p># HTML für die Filter-Steuerelemente</p>
+<p># Inhalt des Detailbereiches</p>
+
+

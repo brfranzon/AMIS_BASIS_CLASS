@@ -22,7 +22,11 @@ export abstract class TvsDataObject {
   }
 
   FindByParams(baseURL: string, p?: any, value?: any) {
-    let params = new HttpParams().set(`${p}`, value);
+    //let params = new HttpParams();
+     let params = new HttpParams().set(`${p}`, value);
+    //const obj = {name: 'Clementina', nachname: 'Bret'}
+    //const params = new HttpParams({fromObject: obj});
+  
     return this._http.get(baseURL, { params: params });
   }
 

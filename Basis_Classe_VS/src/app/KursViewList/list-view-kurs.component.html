@@ -1,0 +1,54 @@
+<!--p> ng-content </p-->
+
+<h4> Kurs Component </h4>
+
+<div class="container mt-1">
+  <TVsViewDataList 
+      [Filter]="Filter"
+      [items] = "data"
+      > 
+ 
+    <h3 class = "title">   Kurs Title </h3>
+    <p class = "content1"> Kurs Content 1  </p>
+    <p class = "content2"> Kurs Content 2 </p>
+ 
+    <ng-template let-item>
+      {{ item.Nachname }}
+    </ng-template>
+
+  </TVsViewDataList>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--TvsViewDataFilter
+  (queryResult)="OnSearch($event)"
+  (filterName)="getFilterName($event)" 
+></TvsViewDataFilter>
+
+<div class="container mt-5">
+    <TVsViewDataList
+    [data] = "dataKurs"
+    >
+    </TVsViewDataList>
+</div>
+
+<p>    [userFilter] = "searchResult"
+</p-->

@@ -1,0 +1,203 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Application-wide Styles */
+
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 250%;
+}
+
+h2 {
+  color: rgb(95, 95, 95);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  /* font-weight: lighter; */
+  font-size: 150%;
+}
+
+h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+body {
+  margin: 2em;
+}
+
+body, input[type="text"], button {
+  color: #333;
+  font-family: Cambria, Georgia;
+}
+
+
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*
+--------------------------------------------------------------------------------
+  vsLib: View
+--------------------------------------------------------------------------------
+*/
+
+.vsView {
+  border-style:       solid;
+  border-width:       thin;
+  border-color:       rgb(200, 200, 200);
+  border-radius:      5px;
+
+  margin:             0rem;
+  padding:            1rem;
+
+  background-color:   white;
+}
+
+
+/*---- View Sections ----*/
+
+.vsViewSectionTitle {
+  border-style:       none;
+ 
+  margin:             0rem;
+  padding:            0rem;
+
+  font-weight:        bolder;
+  font-size:          25px;
+}
+
+
+.vsViewSectionMain {
+  border-style:       none;
+
+  margin:             0rem;
+  padding:            1rem;
+
+  background-color:   white;
+}
+
+
+
+/*---- View Section Placeholders ----*/
+
+
+.vsViewSectionPlaceholderTitle {
+  border-style:       solid;
+  border-width:       thin;
+  border-color:       rgb(200, 200, 200);
+  border-radius:      5px;
+
+  margin:             1rem;
+  padding:            1rem;
+
+  font-weight:        bolder;
+  font-size:          25px;
+
+  background-color: rgb(253, 235, 220);
+}
+
+
+.vsViewSectionPlaceholderMenu {
+  border-style:       solid;
+  border-width:       thin;
+  border-color:       rgb(200, 200, 200);
+  border-radius:      5px;
+
+  margin:             1rem;
+  padding:            1rem;
+
+  font-weight:        bold;
+  font-size:          14px;
+
+  background-color: rgb(253, 235, 220);
+}
+
+
+.vsViewSectionPlaceholderExtern {
+  border-style:       solid;
+  border-width:       thin;
+  border-color:       rgb(200, 200, 200);
+  border-radius:      5px;
+
+  margin:             1rem;
+  padding:            1rem;
+
+  font-weight:        bold;
+  font-size:          14px;
+
+  background-color: rgb(250, 195, 155);
+}
+
+
+.vsViewSectionPlaceholderMain {
+  display:            flex;
+  border-style:       none;
+  border-width:       thin;
+  border-color:       rgb(200, 200, 200);
+  border-radius:      5px;
+
+  margin:             0rem;
+  padding:            0rem;
+
+  background-color:   white;
+
+  height:             500px;
+}
+
+
+.vsViewSectionPlaceholderMainTable {
+  border-style:       solid;
+  border-width:       thin;
+  border-color:       rgb(200, 200, 200);
+  border-radius:      5px;
+
+  margin:             1rem;
+  padding:            1rem;
+
+  font-weight:        bold;
+  font-size:          14px;
+
+  background-color: rgb(220, 240, 255);
+
+  width:              80%;
+}
+
+
+.vsViewSectionPlaceholderMainRight {
+  border-style:       solid;
+  border-width:       thin;
+  border-color:       rgb(200, 200, 200);
+  border-radius:      5px;
+
+  margin:             1rem;
+  padding:            1rem;
+
+  font-weight:        bold;
+  font-size:          14px;
+
+  background-color: rgb(250, 195, 155);
+
+  width:              20%;
+}
+
+
+.vsViewSectionPlaceholderFooter {
+  border-style:       solid;
+  border-width:       thin;
+  border-color:       rgb(200, 200, 200);
+  border-radius:      5px;
+
+  margin:             1rem;
+  padding:            1rem;
+
+  font-weight:        bold;
+  font-size:          14px;
+
+  background-color: rgb(253, 235, 220);
+}
+

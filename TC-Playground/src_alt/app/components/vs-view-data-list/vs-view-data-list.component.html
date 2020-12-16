@@ -1,0 +1,9 @@
+<p><b>Listenansicht:    {{ ViewTitle }}</b></p>
+
+<hr>
+
+<b>Filter Items ({{ FilterMain.length }}):</b>
+<p *ngFor = "let item of FilterMain">{{ item.Caption }} = "{{ item.Value }}" ({{ item.ControlType }})</p>
+
+
+<hr>

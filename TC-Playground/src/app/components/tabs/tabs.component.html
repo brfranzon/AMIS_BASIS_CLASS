@@ -1,0 +1,23 @@
+<ul class="nav nav-tabs">
+  <!-- dynamic tabs -->
+
+  <li
+    *ngFor="let tab of dynamicTabs"
+    (click)="selectTab(tab)"
+    style="background-color: aquamarine; margin-left: 5px; border-width: 2px solid black;"
+    
+   >
+    <a  [class.active]="!tab.active" class="nav-link"
+      >{{ tab.title }}
+      <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)">
+        X
+      </span>
+      </a
+    >
+  </li>
+</ul>
+
+<!-- <ng-content></ng-content> -->
+<!-- <ng-template mainPlaceholder></ng-template> -->
+
+<ng-template dynamic-tabs></ng-template>

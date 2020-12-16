@@ -1,0 +1,47 @@
+<!--TvsViewDataFilter
+  (queryResultName)="OnSearchName($event)"
+  (filterName)="getFilterName($event)"
+
+  (queryResultNachname)="OnSearchNachname($event)"
+  (filterNachname)="getFilterNachname($event)"
+
+></TvsViewDataFilter-->
+<h4> Schüler Component </h4>
+
+<div class="container mt-1">
+  <TVsViewDataList 
+      [Filter]="Filter"
+      [items]="data"
+      [eventFromChild] = "eventFromChild1"
+
+      [meldung] = "tvsMeldung"
+      > 
+       
+      <h3 class = "title">    Schüler Title      </h3>
+      <p class = "content1">  Schueler Content 1 </p>
+      <p class = "content2">  Schueler Content 2 </p>
+
+      <!--ng-template let-item> 
+            {{ item.models }}
+      </ng-template-->
+
+ </TVsViewDataList>
+</div>
+
+<p>____Event Handler___</p>
+
+<button (click)="handleClick($event)" class = "btn btn-warning">Save</button>
+
+<button (click)="onClick()" class = "btn btn-success">Click me!</button>
+<hr>
+<button  (click)="submitCommand()" class = "btn btn-info">Click!</button>
+
+<br>
+<br>
+<h2> Event </h2>
+
+
+
+
+
+
