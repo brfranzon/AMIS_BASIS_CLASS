@@ -24,4 +24,15 @@ export enum TvsCommonControlType {
     ctCheckBox      = "ctCheckBox"
 } // TvsCommonControlType
 
+export class TActiveComponent {
+    active:      boolean = false;
+    isCloseable: boolean = false;
+  
+    PKValue:     any = '';
+    ProgFuncID:  any = '';
+    ViewRef:     any = '';
+    tabTitle:    any = '';
+    tabID:       any = '';
+  }
+
 

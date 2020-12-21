@@ -1,83 +1,44 @@
 
-<h1>{{appTitle}}</h1>
-<h2>{{appDescriptionShort}}</h2>
-
-
-
-<!--
-<button type="button" class="btn btn-primary" (click)="doOnClickNavTickets()">Tickets</button>
-<button type="button" class="btn btn-primary" (click)="doOnClickNavNotes()">Notizen</button>
-<button type="button" class="btn btn-primary" (click)="doOnClickNavLog()">Log</button>
-
-<hr>
--->
-
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-      <ul class="nav nav-pills">
-
-      <li class="navbar-text"><b>Hauptnavigation:</b></li>
-
-      <li class="nav-item">
-        <a class="nav-link" (click)="doOnClickNavTickets()">Tickets</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" (click)="doOnClickNavNotes()">Notizen</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" (click)="doOnClickNavLog()">Log</a>
-      </li>
-
-    </ul>
-
-  </div>
-</nav> -->
-
-<!-- <h3> Hauptnavigation V2</h3>
-<br>
-
-<hr> -->
-
 
 <menu-list
-  [menuItems]    = "compList"
+  [menuItems]    = "menuItems"
   (onMenuChoice) = "menuTabTemplate($event)">
 </menu-list>
 
-<my-tabs>    
- 
-</my-tabs>
 
-<!-- <ng-template #MainTemplate>
-  <app-ticket-view-ticket-list></app-ticket-view-ticket-list>
-</ng-template> -->
+<li
+    *ngFor="let comp of _activeComponentsService.ActiveComponents"
+    style="background-color: aquamarine; margin-left: 5px; border-width: 2px solid black;"
+   >
+   [ProgFuncID] {{ comp.ProgFuncID }}
+   [TabTitle] {{ comp.tabTitle }}
+   [TabID] {{ comp.tabID }}
 
-<ng-template  #ticketview>
-  
-  <button class="btn btn-warning" (click)="onOpenEdit()"> Neuer Antrag</button>
+   [Active] {{ comp.active }}
+   [Closeable] {{ comp.isCloseable }}
+   [PKValue] {{ comp.PKValue }}
+  </li>
+<hr>
 
-  <br>
-  <app-ticket-view-ticket-list></app-ticket-view-ticket-list>
+<ul class="nav nav-tabs">
+  <!-- dynamic tabs -->
 
- </ng-template>
+  <li
+  *ngFor="let tab of _activeComponentsService.ActiveComponents"
+  (click)="selectTab(tab)"
+    style="background-color: aquamarine; margin-left: 5px; border-width: 2px solid black;"
+
+   >
+    <a  [class.active]="!tab.active" class="nav-link"
+      >{{ tab.tabTitle }}
+      <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)">
+        X
+      </span>
+      </a
+    >
+  </li>
+</ul>
 
 
-<ng-template  #ticketNote>
-   <app-ticket-view-note-list></app-ticket-view-note-list>
-</ng-template>
 
-<ng-template  #ticketLog>
-  <app-ticket-view-log-list></app-ticket-view-log-list>
-</ng-template> 
-
-
-<ng-template #ticketEdit>
-  <editticketform></editticketform>
-</ng-template> 
-
-
-<!--router-outlet></router-outlet-->
-
+<ng-template mainPlaceholder></ng-template>

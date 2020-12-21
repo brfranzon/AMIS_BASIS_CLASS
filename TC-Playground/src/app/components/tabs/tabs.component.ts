@@ -93,7 +93,7 @@ export class TabsComponent implements AfterContentInit {
     // alternatively...
     // let viewContainerRef = this.dynamicTabPlaceholder;
 
-    // create a component instance
+    // create a component instance: andere Eingenschten vorhanden!
         const componentRef = viewContainerRef.createComponent(componentFactory);
 
       
@@ -106,8 +106,8 @@ export class TabsComponent implements AfterContentInit {
     // set the according properties on our component instance
         const instance: TabComponent = componentRef.instance as TabComponent;
         instance.title = title;
-        instance.template = template;
-        instance.dataContext = data;
+      //  instance.template = template;
+      //  instance.dataContext = data;
         instance.isCloseable = isCloseable;
       //  instance.instance = maincomponentRef; 
            

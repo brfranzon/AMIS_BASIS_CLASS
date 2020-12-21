@@ -8,18 +8,18 @@ import { EventEmitter, Injectable } from '@angular/core';
 
     constructor(){ }
 
-    onEventChange: EventEmitter<any> = new EventEmitter();
+    onEventChange: EventEmitter<any>        =         new EventEmitter();
    
-    dispatch(id?: any, pkValue?: any,  data?: any, template?: any) {
-
+    dispatch(data?: any) {
       // console.log('data from the service:', data);
       this.onEventChange.emit(data);
-
     }
 
-    getChangeEmitter() {
+    
+    changeEmitter() {
       return this.onEventChange;
     }
+
 
     //  // return this.onEventChange;
     // editEvent(param){

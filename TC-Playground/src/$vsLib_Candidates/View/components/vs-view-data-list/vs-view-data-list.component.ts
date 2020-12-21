@@ -121,10 +121,11 @@ export class TvsViewDataList extends vsViewData.TvsViewData implements OnInit {
       });
  }
 
- onEdit(e: any){
+ onEdit(event: any){
 
-  console.log('click', e);
-  this.dispatchService.dispatch(1, e.vorfall_nr, e, 'Template für das Formular');
+  console.log('click', event);
+  
+  this.dispatchService.dispatch(event);
   
   }
 

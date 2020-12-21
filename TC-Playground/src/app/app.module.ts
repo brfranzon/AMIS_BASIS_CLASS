@@ -24,6 +24,7 @@ import { TicketService } from './services/ticket.Service';
 import { TicketModelTicket } from 'src/$vsLib_Candidates/vsDataModel';
 import { EditTicketFormComponent } from './editComponents/edit-ticket-form.component';
 import { DispatchService } from './services/dispatch.service';
+import { ActiveComponentsService } from './services/activeComponents.Service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DispatchService } from './services/dispatch.service';
   providers: [
      TicketService,
      TicketModelTicket,
-     DispatchService
+     DispatchService,
+     ActiveComponentsService
     ],
   bootstrap: [AppComponent],
     // register the dynamic components here
@@ -59,6 +61,13 @@ import { DispatchService } from './services/dispatch.service';
 
   // , schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(){
+    
+  }
+
+
+}
 
 

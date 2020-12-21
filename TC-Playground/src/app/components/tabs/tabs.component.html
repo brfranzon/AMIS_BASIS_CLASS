@@ -9,7 +9,7 @@
    >
     <a  [class.active]="!tab.active" class="nav-link"
       >{{ tab.title }}
-      <span class="tab-close" *ngIf="tab.isCloseable" (click)="closeTab(tab)">
+      <span class="tab-close" (click)="closeTab(tab)">
         X
       </span>
       </a

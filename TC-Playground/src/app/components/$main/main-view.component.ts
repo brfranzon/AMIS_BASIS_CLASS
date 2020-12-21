@@ -40,10 +40,17 @@ import { Router } from '@angular/router';
 
 import * as vsViewDataList from 'src/$vsLib_Candidates/View/components/vs-view-data-list/vs-view-data-list.component';
 import { EditTicketFormComponent } from 'src/app/editComponents/edit-ticket-form.component';
+import { ActiveComponentsService } from 'src/app/services/activeComponents.Service';
 import { DispatchService } from 'src/app/services/dispatch.service';
+import { mainPlaceholderDirective } from '../tabs/dynamic-tabs.directive';
 
 import { TabsComponent } from '../tabs/tabs.component';
+import { TicketViewLogList } from '../ticket/ticket-view-log-list/ticket-view-log-list.component';
+import { TicketViewNoteList } from '../ticket/ticket-view-note-list/ticket-view-note-list.component';
 import { TicketViewTicketList } from '../ticket/ticket-view-ticket-list/ticket-view-ticket-list.component';
+
+import { TActiveComponent } from './../../../$vsLib_Candidates/vsCommon';
+
 
 @Component({
   selector: 'main-view',
@@ -54,10 +61,10 @@ export class MainView extends vsViewDataList.TvsViewDataList implements OnInit {
   //------ Properties (PRIVATE)
 
   //------ Properties (PUBLIC)
+  @ViewChild(mainPlaceholderDirective)  mainPlaceholder: mainPlaceholderDirective;
 
   public appTitle: String = 'AMIS®7 goes WEB';
-  public appDescriptionShort: String =
-    'MyPlayground (TC) | Spielwiese für Experimente';
+  public appDescriptionShort: String = 'MyPlayground (TC) | Spielwiese für Experimente';
 
   //------ Constructor
 
@@ -65,125 +72,122 @@ export class MainView extends vsViewDataList.TvsViewDataList implements OnInit {
     protected router: Router,
     protected _http: HttpClient,
     protected _componentFactoryResolver: ComponentFactoryResolver,
-    protected  dispatchService: DispatchService
-  ) {
-    super(router, _http, _componentFactoryResolver, dispatchService);
+    protected  dispatchService: DispatchService,
+    public     _activeComponentsService: ActiveComponentsService
+    ) {
+      super(router, _http, _componentFactoryResolver, dispatchService);
+    } // constructor
 
-   
+    //------ Methods (PUBLIC)
+
+    //--------------------------------------------------------------------------
+    // Method:  xxxx
+    // Notes:   ...
+    //--------------------------------------------------------------------------
+
+    // ./.
 
 
+  menuItems: any[] = [];
 
 
-  } // constructor
-
-  //------ Methods (PUBLIC)
-
-  //--------------------------------------------------------------------------
-  // Method:  xxxx
-  // Notes:   ...
-  //--------------------------------------------------------------------------
-
-  // ./.
-
-  //------ Event Handler
-
-  public doOnClickNavTickets(): void {
-    // alert('Aufruf: Tickets (Liste)');
-    // this.router.navigate(['/ticketViewTicketList']);
-    // this.dispatchProgFunc('Ticket_Stamm_Ticket');
-    this.dispatchRoute(['ticketViewTicketList']);
-  }
-
-  public doOnClickNavNotes(): void {
-    // alert('Aufruf: Notizen (Liste)');
-    // this.dispatchProgFunc('Ticket_Data_Notes');
-    this.dispatchRoute(['/ticketViewNoteList']);
-  }
-
-  public doOnClickNavLog(): void {
-    // alert('Aufruf: Log (Liste)');
-    // this.dispatchProgFunc('Ticket_Data_Log');
-    this.dispatchRoute(['/ticketViewLogList']);
-  }
-
-  //------ NG event handler
-  @ViewChild('ticketview')             ticketviewTemplate;
-  @ViewChild('ticketNote')             ticketNoteTemplate;
-  @ViewChild('ticketLog' )             ticketLogTemplate ;
-
-  @ViewChild(TabsComponent) tabsComponent;
-
-  compList: any[] = [];
- 
-  //@ViewChild('template', { read: ViewContainerRef }) formRef: ViewContainerRef;
- 
   ngOnInit(): void {
+    this.menuItems = [
+      {  id: 1,    tabTyp: 'listView',    name: 'Tickets',    comp: TicketViewTicketList      },
+      {  id: 2,    tabTyp: 'listView',    name: 'Notizen',    comp: TicketViewNoteList        },
+      {  id: 3,    tabTyp: 'listView',    name: 'Log',        comp: TicketViewLogList         },
+      {  id: 4,    tabTyp: 'editView',    name: 'TicketEdit', comp: EditTicketFormComponent   },
+    ];
 
-    this.compList = [
-      {  id:  1,     viewArt:  "listView",   pkValue: '',    name: "Tickets",    comp:    this.ticketNoteTemplate         },
-      {  id:  2,     viewArt:  'listView',   pkValue: '',    name: 'Notizen',    comp:    this.ticketNoteTemplate         },
-      {  id:  3,     viewArt:  'listView',   pkValue: '',    name: 'Log',        comp :   this.ticketLogTemplate          },
-    ];    
+     console.log('Init mainPlaceholder: ', this.mainPlaceholder);
 
 
-  this.dispatchService.getChangeEmitter().subscribe(
-    (res) => {
-     this.tabsComponent.openTab(
-       `Editing ${res.name}`,
-       this.ticketviewTemplate,
-       res,
-       true
-     );}
-    );
+     // dispatch
+    this.dispatchService.changeEmitter().subscribe(
+
+      data => {console.log('data from dispatch: ', data);}
+
+
+    )
 
   }
-
-  /**********************************
-   * 1. Versuch
-   **********************************/
-  menuTabTemplate(menu: any) {
-
-   this.dispatchService.dispatch(menu.id, '', menu, '');
-      
-  //   switch (menu.id) {
-  //     case 1:
-  //       this.tabsComponent.openTab(
-  //         `Editing ${menu.name}`,
-  //         this.ticketviewTemplate,
-  //         menu,
-  //         true
-  //       );
-  //       break;
-
-  //     case 2:
-  //       this.tabsComponent.openTab(
-  //         `Editing ${menu.name}`,
-  //         this.ticketNoteTemplate,
-  //         menu,
-  //         true
-  //       );
-  //       break;
-
-  //     case 3:
-  //       this.tabsComponent.openTab(
-  //         `Editing ${menu.name}`,
-  //         this.ticketLogTemplate,
-  //         menu,
-  //         true
-  //       );
-  //       break;
-  //   }
-
- }
-
-
-
-
-  @ViewChild('ticketEdit')                                     ticketEditTemplate;
-  onOpenEdit() {
-    this.tabsComponent.openTab('TicketEditNeu', this.ticketEditTemplate, {}, true);
-   }
  
+  menuTabTemplate(menu) {
+    this.RetrieveComp(menu);
+  }
+
+
+  RetrieveComp(a_menu: any): void {
+    let componentFactory  = this._componentFactoryResolver.resolveComponentFactory(a_menu.comp);
+    let viewContainerRef  = this.mainPlaceholder.viewContainer;
+  
+    let iFound: number = -1;
+
+    console.log('menu2: ', a_menu);
+
+    if (a_menu.tabTyp === 'listView')
+    {
+      for(let i = 0; i < this._activeComponentsService.ActiveComponents.length; i++)
+      {
+          if (this._activeComponentsService.ActiveComponents[i].ProgFuncID === a_menu.id) {
+              console.log('gefunden: ', i);
+              iFound = i;
+            }
+      }
+    }
+
+    if (iFound === -1)
+    {
+          // Neu erzeugen und anzeigen
+
+          const instance: any = viewContainerRef.createComponent(componentFactory);
+
+          let ac: TActiveComponent = new  TActiveComponent();
+
+          ac.ProgFuncID   = a_menu.id;
+          ac.PKValue      = '';
+          ac.ViewRef      = instance;
+          ac.tabTitle     = a_menu.name;
+          ac.tabID        = this._activeComponentsService.ActiveComponents.length;
+          ac.isCloseable  = (a_menu.tabTyp == 'listView');
+          console.log('closeable: ', ac.isCloseable);
+
+          this._activeComponentsService.ActiveComponents.push(ac);
+
+          this.selectTab(ac);
+    }
+    else {
+      // Vorhandene Instance anzeigen
+       this.selectTab(this._activeComponentsService.ActiveComponents[iFound]);
+    }
+  }
+
+  selectTab(a_tab: TActiveComponent) {
+    // deactivate all tabs
+     this._activeComponentsService.ActiveComponents.forEach(tab => (tab.active = false));
+    // activate the tab the user has clicked on.
+    a_tab.active = true;
+
+    this.mainPlaceholder.viewContainer.detach(0);
+    this.mainPlaceholder.viewContainer.insert(a_tab.ViewRef.hostView);
+  }
+
+  closeTab(tab: TActiveComponent) {
+    console.log('CloseTab');
+    let viewContainerRef  = this.mainPlaceholder.viewContainer;
+    for (let i = 0; i < this._activeComponentsService.ActiveComponents.length; i++) {
+         if (this._activeComponentsService.ActiveComponents[i] === tab) {
+
+          // remove the tab from our array
+          this._activeComponentsService.ActiveComponents.splice(i, 1);
+
+          // set tab index to 1st one
+          console.log('tab: ', this._activeComponentsService.ActiveComponents[this._activeComponentsService.ActiveComponents.length - 1]);
+          this.selectTab(this._activeComponentsService.ActiveComponents[this._activeComponentsService.ActiveComponents.length - 1]);
+          break;
+        }
+      }
+    }
 
 
 } // MainView
@@ -192,24 +196,6 @@ export class MainView extends vsViewDataList.TvsViewDataList implements OnInit {
 
 
 
-
-//  this.eventService.emitEvent(menu.id);
-
-//   this.eventService.getChangeEmitter()
-// .subscribe(
-
-//   (res) => {
-
-//    this.tabsComponent.openTab(
-//        `Editing ${res.name}`,
-//        this.ticketviewTemplate,
-//        res,
-//        true
-//      );
-//   
-//  }
-  
-//   );
 
 
 
